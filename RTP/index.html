@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYNAPSE 2026 | IIT Bombay Techfest - Cyborg Ascension</title>
+    <meta name="description" content="Explore the bionic future at IIT Bombay Techfest 2026. Interactive bionic interfaces, heavy robo-wars, genetic synthesis, and autonomous neural telemetry.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Canvas for Neural Grid Animation -->
+    <canvas id="neural-canvas"></canvas>
+    
+    <!-- Audio Elements for Cyber Sound Effects -->
+    <audio id="click-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-84.wav" preload="auto"></audio>
+    <audio id="hover-sound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-84.wav" preload="auto"></audio>
+    <audio id="success-sound" src="https://assets.mixkit.co/active_storage/sfx/1435/1435-84.wav" preload="auto"></audio>
+
+    <!-- Scanline overlay for CRT look -->
+    <div class="scanlines"></div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo" id="nav-logo">
+                <span class="logo-accent">SYS</span>.SYNAPSE<span class="logo-version">v2.0.26</span>
+            </a>
+            
+            <div class="telemetry-pill">
+                <span class="status-dot pulsing"></span>
+                <span class="telemetry-text">LINK: STABLE [99.4% BIOLINK]</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#blueprint" class="nav-link">Blueprint</a>
+                <a href="#events" class="nav-link">Competitions</a>
+                <a href="#console" class="nav-link">System Logs</a>
+                <a href="#register" class="btn-primary btn-sm" id="btn-nav-register">SYNC LINK</a>
+            </nav>
+
+            <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-container">
+                <div class="hud-frame-top">
+                    <span class="hud-coords">LAT: 19.1334° N | LON: 72.9156° E [IIT BOMBAY]</span>
+                    <span class="hud-mode">SYS_MODE: CYBORG_INIT</span>
+                </div>
+                
+                <h1 class="hero-title" id="glitch-title">
+                    CYBORG<br>
+                    <span class="gradient-text">ASCENSION</span>
+                </h1>
+                
+                <p class="hero-tagline">
+                    Techfest 2026 breaches the barrier between metal and mind. Explore neural networks, bionic chassis integration, and cognitive telemetry at Asia's largest science and technology festival.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#register" class="btn-primary btn-lg" id="btn-hero-sync">
+                        <span class="btn-inner">INITIALIZE LINK</span>
+                    </a>
+                    <a href="#blueprint" class="btn-secondary btn-lg" id="btn-hero-telemetry">
+                        <span class="btn-inner">LOAD TELEMETRY</span>
+                    </a>
+                </div>
+
+                <div class="hud-frame-bottom">
+                    <div class="scroll-indicator">
+                        <span class="scroll-text">SYSTEM DEEP SCAN</span>
+                        <div class="scroll-arrow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bionic Blueprint Section -->
+        <section id="blueprint" class="blueprint-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="title-number">01 //</span> BIONIC SCHEMA</h2>
+                    <p class="section-subtitle">Interact with the Synapse cyborg chassis blueprint to view integration diagnostics.</p>
+                </div>
+
+                <div class="blueprint-grid">
+                    <!-- Left: Interactive Blueprint Display -->
+                    <div class="blueprint-visual-container">
+                        <div class="blueprint-border-glow">
+                            <img src="assets/cyborg_blueprint.png" alt="Cyborg Blueprint Schema" class="blueprint-image" id="blueprint-img">
+                            
+                            <!-- Hotspots Overlay -->
+                            <div class="blueprint-hotspots">
+                                <button class="hotspot active" style="top: 18%; left: 50%;" data-part="neural" id="spot-neural">
+                                    <span class="hotspot-pulse"></span>
+                                    <span class="hotspot-number">01</span>
+                                </button>
+                                <button class="hotspot" style="top: 25%; left: 47%;" data-part="ocular" id="spot-ocular">
+                                    <span class="hotspot-pulse"></span>
+                                    <span class="hotspot-number">02</span>
+                                </button>
+                                <button class="hotspot" style="top: 45%; left: 50%;" data-part="reactor" id="spot-reactor">
+                                    <span class="hotspot-pulse"></span>
+                                    <span class="hotspot-number">03</span>
+                                </button>
+                                <button class="hotspot" style="top: 40%; left: 63%;" data-part="bionic-arm" id="spot-arm">
+                                    <span class="hotspot-pulse"></span>
+                                    <span class="hotspot-number">04</span>
+                                </button>
+                                <button class="hotspot" style="top: 72%; left: 54%;" data-part="chassis" id="spot-chassis">
+                                    <span class="hotspot-pulse"></span>
+                                    <span class="hotspot-number">05</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Diagnostic Info Panel -->
+                    <div class="diagnostic-panel">
+                        <div class="diagnostic-header">
+                            <span class="diagnostic-tag">CHASSIS DIAGNOSTICS</span>
+                            <h3 class="diagnostic-title" id="diag-title">Neural Link Interface</h3>
+                        </div>
+
+                        <div class="diagnostic-body">
+                            <div class="diagnostic-stats">
+                                <div class="stat-row">
+                                    <span class="stat-label">COMPONENT ID</span>
+                                    <span class="stat-value text-mono" id="diag-id">NL-990-X</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">INTEGRATION RATIO</span>
+                                    <span class="stat-value text-mono text-cyan" id="diag-ratio">99.8%</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">STATUS</span>
+                                    <span class="stat-value text-mono text-green" id="diag-status">STABLE // ONLINE</span>
+                                </div>
+                            </div>
+
+                            <p class="diagnostic-description" id="diag-desc">
+                                Direct synaptic communication bridge enabling sub-millisecond control of bionic enhancements. Utilizing deep-tissue micro-electrodes linked directly to the motor cortex, achieving organic neural integration with zero neural rejection.
+                            </p>
+
+                            <div class="diagnostic-telemetry">
+                                <span class="telemetry-header">LIVE TELEMETRY STREAM</span>
+                                <div class="telemetry-bar-container">
+                                    <div class="telemetry-bar-fill" id="diag-bar" style="width: 99.8%;"></div>
+                                </div>
+                                <div class="telemetry-values">
+                                    <span id="telemetry-value-left">0.0 ms LATENCY</span>
+                                    <span id="telemetry-value-right">BANDWIDTH: 10 Gb/s</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="diagnostic-footer">
+                            <span class="system-time">SYS_TIME: 2026.06.18</span>
+                            <span class="system-status">LINK_STABLE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events / Competitions Grid Section -->
+        <section id="events" class="events-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="title-number">02 //</span> CYBER COMPETITIONS</h2>
+                    <p class="section-subtitle">Unleash your cybernetic prowess in Techfest's flagship national challenges.</p>
+                </div>
+
+                <div class="events-grid">
+                    <!-- Card 1: Robo-Wars -->
+                    <div class="event-card" id="card-robo">
+                        <div class="card-glow"></div>
+                        <div class="card-header">
+                            <span class="card-category">ROBOTICS / COMBAT</span>
+                            <h3 class="card-title">RoboWars: Steel Surgery</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Metal clashes in the arena of steel. Construct a high-powered machine to defeat opponents using pneumatic axes, titanium discs, and cyber-guided weapons.
+                            </p>
+                            <div class="card-specs">
+                                <div class="spec-item"><span class="spec-label">Weight limit</span><span class="spec-value">60 kg / 120 lbs</span></div>
+                                <div class="spec-item"><span class="spec-label">Arena</span><span class="spec-value">Reinforced Lexan Shield</span></div>
+                                <div class="spec-item"><span class="spec-label">Prize pool</span><span class="spec-value">INR 5,00,000</span></div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#register" class="btn-card-action" data-event="RoboWars: Steel Surgery">REGISTER NOW <span class="arrow-icon">→</span></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Neural Hack -->
+                    <div class="event-card" id="card-neural">
+                        <div class="card-glow"></div>
+                        <div class="card-header">
+                            <span class="card-category">AI / HACKATHON</span>
+                            <h3 class="card-title">Neural Hack: Synaptic Shift</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Program artificial synapses to process large telemetry datasets. Design predictive bio-modeling neural nets or bypass synthetic network nodes in 36 hours.
+                            </p>
+                            <div class="card-specs">
+                                <div class="spec-item"><span class="spec-label">Duration</span><span class="spec-value">36-Hour Sprint</span></div>
+                                <div class="spec-item"><span class="spec-label">Format</span><span class="spec-value">On-Site & Virtual</span></div>
+                                <div class="spec-item"><span class="spec-label">Prize pool</span><span class="spec-value">INR 3,50,000</span></div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#register" class="btn-card-action" data-event="Neural Hack: Synaptic Shift">REGISTER NOW <span class="arrow-icon">→</span></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Bio-Synth -->
+                    <div class="event-card" id="card-biosynth">
+                        <div class="card-glow"></div>
+                        <div class="card-header">
+                            <span class="card-category">BIO-TECH / SYNTHESIS</span>
+                            <h3 class="card-title">Bio-Synth: Gene Design</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Redefine organic matter. Engineer cell structures, synthesize biological processors, and design artificial enzymes to cure diseases or interface with silicon.
+                            </p>
+                            <div class="card-specs">
+                                <div class="spec-item"><span class="spec-label">Category</span><span class="spec-value">Molecular Design</span></div>
+                                <div class="spec-item"><span class="spec-label">Platform</span><span class="spec-value">CRISPR/AI Modeling</span></div>
+                                <div class="spec-item"><span class="spec-label">Prize pool</span><span class="spec-value">INR 4,00,000</span></div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#register" class="btn-card-action" data-event="Bio-Synth: Gene Design">REGISTER NOW <span class="arrow-icon">→</span></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Grid Runner -->
+                    <div class="event-card" id="card-runner">
+                        <div class="card-glow"></div>
+                        <div class="card-header">
+                            <span class="card-category">DRONES / PILOTING</span>
+                            <h3 class="card-title">Grid Runner: Drone Racing</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">
+                                Navigate high-speed cybernetic drones through glowing neon gate matrices. Experience manual FPV flight or test your AI autonomous pathfinding algorithm.
+                            </p>
+                            <div class="card-specs">
+                                <div class="spec-item"><span class="spec-label">Course</span><span class="spec-value">3D Neon Matrix Ring</span></div>
+                                <div class="spec-item"><span class="spec-label">Telemetry</span><span class="spec-value">FPV Real-Time feed</span></div>
+                                <div class="spec-item"><span class="spec-label">Prize pool</span><span class="spec-value">INR 3,00,000</span></div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#register" class="btn-card-action" data-event="Grid Runner: Drone Racing">REGISTER NOW <span class="arrow-icon">→</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Console & Countdown Section -->
+        <section id="console" class="console-section">
+            <div class="section-container">
+                <div class="console-countdown-grid">
+                    <!-- Left: Live system boot console -->
+                    <div class="console-terminal-wrapper">
+                        <div class="console-header">
+                            <div class="console-dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            <span class="console-title">SYNAPSE_SHELL // root@iitb.techfest.org</span>
+                        </div>
+                        <div class="console-body" id="terminal-console">
+                            <div class="console-line"><span class="console-prompt">&gt;</span> Initializing Synapse central mainframe connection...</div>
+                            <div class="console-line"><span class="console-prompt">&gt;</span> IP Address established: 10.26.113.15</div>
+                            <div class="console-line"><span class="console-prompt">&gt;</span> Establishing biological interface link...</div>
+                            <div class="console-line success-line"><span class="console-prompt">&gt;</span> BIO-LINK STABLE // STATUS 200 OK</div>
+                            <div class="console-line"><span class="console-prompt">&gt;</span> Loading techfest cybernetic event telemetry...</div>
+                            <div class="console-line"><span class="console-prompt">&gt;</span> Waiting for interface registration command...</div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Countdown Timer -->
+                    <div class="countdown-card">
+                        <span class="countdown-tag">COUNTDOWN TO UPLINK</span>
+                        <h3 class="countdown-heading">SYSTEM IGNITION IN</h3>
+                        
+                        <div class="countdown-timer" id="countdown">
+                            <div class="time-block">
+                                <span class="time-number" id="days">00</span>
+                                <span class="time-label">DAYS</span>
+                            </div>
+                            <span class="time-separator">:</span>
+                            <div class="time-block">
+                                <span class="time-number" id="hours">00</span>
+                                <span class="time-label">HOURS</span>
+                            </div>
+                            <span class="time-separator">:</span>
+                            <div class="time-block">
+                                <span class="time-number" id="minutes">00</span>
+                                <span class="time-label">MINUTES</span>
+                            </div>
+                            <span class="time-separator">:</span>
+                            <div class="time-block">
+                                <span class="time-number" id="seconds">00</span>
+                                <span class="time-label">SECONDS</span>
+                            </div>
+                        </div>
+
+                        <div class="countdown-footer-telemetry">
+                            <span>GRID FREQ: 50.02 Hz</span>
+                            <span>CORE LOAD: 22.4%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Section -->
+        <section id="register" class="register-section">
+            <div class="section-container">
+                <div class="register-grid">
+                    <!-- Left: Text detail -->
+                    <div class="register-info">
+                        <div class="register-badge">COGNITIVE SYNC PORTAL</div>
+                        <h2 class="register-title">SYNC YOUR COGNITION</h2>
+                        <p class="register-desc">
+                            Connect your profile to the IIT Bombay Techfest Synapse core. Registering secures your cognitive ID band and provides entry authorization to all cyber competitions and tech zones.
+                        </p>
+                        <div class="requirements-box">
+                            <h4 class="requirements-title">SYNC REQUIREMENTS:</h4>
+                            <ul class="requirements-list">
+                                <li>Valid student ID or tech profile credentials</li>
+                                <li>Compatible interface nodes (Web browser / Keyboard)</li>
+                                <li>Stable cyber-grid connection during uplink</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right: Form -->
+                    <div class="register-card">
+                        <form class="register-form" id="registration-form">
+                            <div class="form-group">
+                                <label for="user-name" class="form-label">COGNITIVE IDENTIFIER (NAME)</label>
+                                <input type="text" id="user-name" class="form-input" placeholder="e.g. Neo or Sarah Connor" required>
+                                <span class="input-glow-bar"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="user-email" class="form-label">SYNC DESTINATION (EMAIL)</label>
+                                <input type="email" id="user-email" class="form-input" placeholder="e.g. user@synapse.org" required>
+                                <span class="input-glow-bar"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="user-comp" class="form-label">TARGET INTERFACE (COMPETITION)</label>
+                                <select id="user-comp" class="form-input" required>
+                                    <option value="" disabled selected>Select Cybernetic Arena</option>
+                                    <option value="robowars">RoboWars: Steel Surgery</option>
+                                    <option value="neuralhack">Neural Hack: Synaptic Shift</option>
+                                    <option value="biosynth">Bio-Synth: Gene Design</option>
+                                    <option value="gridrunner">Grid Runner: Drone Racing</option>
+                                </select>
+                                <span class="input-glow-bar"></span>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="user-accept" required>
+                                    <span class="custom-checkbox"></span>
+                                    I authorize neural data connection under Techfest safety parameters.
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn-primary btn-block" id="btn-submit-registration">
+                                <span class="btn-inner">SYNCHRONIZE COGNITION</span>
+                            </button>
+                        </form>
+
+                        <div class="form-success-message" id="form-success">
+                            <div class="success-icon-wrapper">
+                                <svg class="success-svg" viewBox="0 0 52 52">
+                                    <circle class="success-circle" cx="26" cy="26" r="25" fill="none"/>
+                                    <path class="success-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                                </svg>
+                            </div>
+                            <h3 class="success-title">BIOLINK ESTABLISHED</h3>
+                            <p class="success-text">Your cognitive interface ID has been successfully registered on the Techfest Synapse core mainframe. Checking confirmation data stream...</p>
+                            <button class="btn-secondary btn-sm" id="btn-reset-form">RESET LINK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <span class="footer-logo">TECHFEST 2026</span>
+                <p class="footer-text">IIT Bombay’s Annual Science & Technology Festival. Empowering minds, engineering the future.</p>
+            </div>
+            <div class="footer-links-grid">
+                <div class="footer-links-col">
+                    <span class="col-title">Mainframe</span>
+                    <a href="#hero">Home</a>
+                    <a href="#blueprint">Blueprint</a>
+                    <a href="#events">Competitions</a>
+                </div>
+                <div class="footer-links-col">
+                    <span class="col-title">Social Stream</span>
+                    <a href="#">Instagram</a>
+                    <a href="#">X / Twitter</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Techfest, IIT Bombay. All neural and cyber systems reserved.</span>
+            <span>SYSTEM STATE: OPERATION_ACTIVE</span>
+        </div>
+    </footer>
+
+    <!-- Main javascript file -->
+    <script src="script.js"></script>
+</body>
+</html>
